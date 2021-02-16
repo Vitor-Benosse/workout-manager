@@ -5,21 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".authentication.view.LoginActivity">
+    tools:context=".authentication.view.RegisterActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/appName"
+            android:id="@+id/createAccountText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/roboto"
-            android:text="@string/app_name"
+            android:text="@string/create_a_new_account"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="64sp"
@@ -27,17 +27,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/mainIllustrate"
+        <EditText
+            android:id="@+id/inputName"
             android:layout_width="0dp"
-            android:layout_height="200dp"
+            android:layout_height="74dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="72dp"
             android:layout_marginEnd="16dp"
+            android:background="@drawable/custom_input"
+            android:fontFamily="@font/roboto"
+            android:hint="@string/name"
+            android:textColor="@color/black"
+            android:textColorHint="@color/dark_gray"
+            android:textSize="21sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appName"
-            app:srcCompat="@drawable/main_illustrate" />
+            app:layout_constraintTop_toBottomOf="@+id/createAccountText" />
 
         <EditText
             android:id="@+id/inputEmail"
@@ -55,7 +60,7 @@
             android:textSize="21sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mainIllustrate" />
+            app:layout_constraintTop_toBottomOf="@+id/inputName" />
 
         <EditText
             android:id="@+id/inputPassword"
@@ -76,7 +81,7 @@
             app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
 
         <Button
-            android:id="@+id/loginButton"
+            android:id="@+id/registerButton"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginStart="16dp"
@@ -84,7 +89,7 @@
             android:layout_marginEnd="16dp"
             android:background="@drawable/custom_button_filled"
             android:fontFamily="@font/roboto"
-            android:text="@string/login"
+            android:text="@string/register"
             android:textColor="@color/white"
             android:textSize="19sp"
             app:backgroundTint="@null"
@@ -92,23 +97,35 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
 
-        <Button
-            android:id="@+id/registerButton"
+        <TextView
+            android:id="@+id/alreadyHaveAnAccountText"
             android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="16dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/already_have_an_account"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            app:layout_constraintEnd_toStartOf="@+id/signText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/registerButton" />
+
+        <TextView
+            android:id="@+id/signText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/custom_button_unfilled"
-            android:text="@string/register"
+            android:fontFamily="@font/roboto"
+            android:text="@string/sign_in"
+            android:textAlignment="textEnd"
             android:textColor="@color/orange"
             android:textSize="19sp"
-            app:backgroundTint="@null"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+            app:layout_constraintStart_toEndOf="@+id/alreadyHaveAnAccountText"
+            app:layout_constraintTop_toBottomOf="@+id/registerButton" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
