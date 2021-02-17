@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "3181685061",
+    "project_id": "workout-manager-61820",
+    "storage_bucket": "workout-manager-61820.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:3181685061:android:568c37c5d764d9d9b9362c",
+        "android_client_info": {
+          "package_name": "com.example.workoutmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "3181685061-97lc0bjf4jl8t1m9to6r5ng6692tr5b8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh4hOx7p2NKkgbB8EiHhDsGYeN5NKCG3g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "3181685061-97lc0bjf4jl8t1m9to6r5ng6692tr5b8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
