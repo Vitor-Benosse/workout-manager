@@ -9,6 +9,7 @@ import com.example.workoutmanager.R
 import com.example.workoutmanager.Util
 import com.example.workoutmanager.authentication.viewmodel.AuthenticationViewModel
 import com.example.workoutmanager.databinding.ActivityRegisterBinding
+import com.example.workoutmanager.home.view.HomeActivity
 import com.google.android.material.snackbar.Snackbar
 
 class RegisterActivity : AppCompatActivity() {
@@ -42,5 +43,33 @@ class RegisterActivity : AppCompatActivity() {
         binding.signText.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
         }
+
+        initViewModel()
+    }
+
+    private fun initViewModel() {
+        viewModel.stateRegister.observe(this, { state ->
+            state?.let {
+                navigateToHome(it)
+            }
+        })
+
+        viewModel.error.observe(this, { error ->
+            error?.let {
+                showErrorMessage(it)
+            }
+        })
+    }
+
+    private fun navigateToHome(status : Boolean) {
+        when {
+            status -> {
+                startActivity(Intent(this, HomeActivity::class.java))
+            }
+        }
+    }
+
+    private fun showErrorMessage(message : String) {
+        Snackbar.make(binding.registerButton, message, Snackbar.LENGTH_LONG).show()
     }
 }

@@ -9,6 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WorkoutManager">
+        <activity android:name=".home.view.EmptyHomeActivity"></activity>
+        <activity
+            android:name=".home.view.HomeActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/Theme.WorkoutManager.NoActionBar" />
         <activity android:name=".authentication.view.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
