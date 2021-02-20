@@ -30,7 +30,7 @@ class WorkoutAdapter(
 
         fun bindView(workout: Workout) {
             name.text = workout.name.toString()
-            description.text = workout.description
+            description.text = workout.description.toString()
             date.text = workout.date.toString()
         }
     }

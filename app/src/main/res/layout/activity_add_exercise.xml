@@ -8,8 +8,6 @@
         android:layout_height="wrap_content"
         tools:context=".add.view.AddExerciseActivity">
 
-        <include layout="@layout/toolbar"/>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
