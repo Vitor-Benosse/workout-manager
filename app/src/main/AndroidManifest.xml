@@ -10,11 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WorkoutManager">
         <activity android:name=".add.view.AddExerciseActivity" />
-        <activity android:name=".add.view.AddWorkoutActivity" />
+        <activity android:name=".add.view.AddWorkoutActivity"
+            android:theme="@style/Theme.WorkoutManager"/>
         <activity
             android:name=".home.view.HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/Theme.WorkoutManager.NoActionBar" />
+            android:theme="@style/Theme.WorkoutManager" />
         <activity android:name=".authentication.view.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -19,4 +19,8 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="you_haven_t_added_any_workout_yet">You haven\'t added any workout yet</string>
     <string name="try_to_add_your_first_workout">Try to add your first workout</string>
+    <string name="add_a_workout">Add a Workout</string>
+    <string name="description">Description</string>
+    <string name="date">Date</string>
+    <string name="add">Add</string>
 </resources>

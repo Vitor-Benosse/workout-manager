@@ -1,7 +1,7 @@
 package com.example.workoutmanager.model
 
 data class Workout(
-    val name : Int,
+    val name : String,
     val description : String,
-    val date : Int
+    val date : String
 )

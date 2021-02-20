@@ -17,7 +17,7 @@ android {
         versionCode 1
         versionName "1.0"
         android.defaultConfig.vectorDrawables.useSupportLibrary = true
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -60,7 +60,10 @@ dependencies {
 
     // Firebase
     implementation platform('com.google.firebase:firebase-bom:26.5.0')
+    implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation 'com.google.firebase:firebase-auth-ktx'
+
+    implementation "androidx.multidex:multidex:2.0.1"
 }
 
 apply plugin: 'com.google.gms.google-services'

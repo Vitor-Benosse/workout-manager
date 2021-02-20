@@ -1,5 +1,6 @@
 package com.example.workoutmanager
 
+import android.content.ClipDescription
 import android.content.Context
 import android.util.Patterns
 import com.example.workoutmanager.Constants.APP_KEY
@@ -30,6 +31,15 @@ object Util {
                 false
             }
             password.length < 6 -> {
+                false
+            }
+            else -> true
+        }
+    }
+
+    fun validateNameDescriptionAndDate(name: String, description: String, date: String) : Boolean {
+        return when {
+            name.isEmpty() || description.isEmpty() || date.isEmpty() -> {
                 false
             }
             else -> true
