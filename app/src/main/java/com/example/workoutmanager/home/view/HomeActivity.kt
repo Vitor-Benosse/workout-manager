@@ -13,6 +13,7 @@ import com.example.workoutmanager.add.view.AddWorkoutActivity
 import com.example.workoutmanager.databinding.ActivityHomeBinding
 import com.example.workoutmanager.home.adapter.WorkoutAdapter
 import com.example.workoutmanager.home.viewmodel.HomeViewModel
+import com.example.workoutmanager.workout.view.WorkoutActivity
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
@@ -30,7 +31,10 @@ class HomeActivity : AppCompatActivity() {
                 with(recyclerWorkouts) {
                     layoutManager = LinearLayoutManager(this@HomeActivity, RecyclerView.VERTICAL, false)
                     setHasFixedSize(true)
-                    adapter = WorkoutAdapter(workouts)
+                    adapter = WorkoutAdapter(workouts) { workout ->
+                        val intent = WorkoutActivity.getStartIntent(this@HomeActivity, workout.name)
+                        this@HomeActivity.startActivity(intent)
+                    }
                 }
             }
         })

@@ -9,12 +9,14 @@ import com.example.workoutmanager.model.Workout
 import kotlinx.android.synthetic.main.item_workout.view.*
 
 class WorkoutAdapter(
-    private val workouts: List<Workout>
+    private val workouts: List<Workout>,
+    private val onItemClickListener: ((workout: Workout) -> Unit)
 ) : RecyclerView.Adapter<WorkoutAdapter.WorkoutViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkoutViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_workout, parent, false)
-        return WorkoutViewHolder(itemView)
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_workout, parent, false)
+        return WorkoutViewHolder(itemView, onItemClickListener)
     }
 
     override fun onBindViewHolder(viewHolder: WorkoutViewHolder, position: Int) {
@@ -23,7 +25,10 @@ class WorkoutAdapter(
 
     override fun getItemCount() = workouts.count()
 
-    class WorkoutViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class WorkoutViewHolder(
+            itemView: View,
+            private val onItemClickListener: ((workout: Workout) -> Unit)
+    ) : RecyclerView.ViewHolder(itemView) {
         private val name = itemView.workout_name
         private val description = itemView.workout_description
         private val date = itemView.workout_date
@@ -32,6 +37,10 @@ class WorkoutAdapter(
             name.text = workout.name
             description.text = workout.description
             date.text = workout.date
+
+            itemView.setOnClickListener {
+                onItemClickListener.invoke(workout)
+            }
         }
     }
 }

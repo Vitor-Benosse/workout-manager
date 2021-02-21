@@ -9,9 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WorkoutManager">
+        <activity android:name=".workout.view.WorkoutActivity"></activity>
         <activity android:name=".add.view.AddExerciseActivity" />
-        <activity android:name=".add.view.AddWorkoutActivity"
-            android:theme="@style/Theme.WorkoutManager"/>
+        <activity
+            android:name=".add.view.AddWorkoutActivity"
+            android:theme="@style/Theme.WorkoutManager" />
         <activity
             android:name=".home.view.HomeActivity"
             android:label="@string/title_activity_home"
