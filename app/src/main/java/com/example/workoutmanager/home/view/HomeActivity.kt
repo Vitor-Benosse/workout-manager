@@ -16,20 +16,18 @@ import com.example.workoutmanager.home.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
-    private val viewModel: HomeViewModel by lazy {
-        ViewModelProvider(this).get(
-            HomeViewModel::class.java
-        )
-    }
     private lateinit var binding: ActivityHomeBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
-
+        val viewModel: HomeViewModel by lazy {
+            ViewModelProvider(this).get(
+                HomeViewModel::class.java
+            )
+        }
         viewModel.workoutLiveData.observe(this, Observer {
             it?.let { workouts ->
-                with(binding.recyclerWorkouts) {
+                with(recyclerWorkouts) {
                     layoutManager = LinearLayoutManager(this@HomeActivity, RecyclerView.VERTICAL, false)
                     setHasFixedSize(true)
                     adapter = WorkoutAdapter(workouts)
@@ -37,7 +35,7 @@ class HomeActivity : AppCompatActivity() {
             }
         })
 
-        viewModel.getWorkouts()
+        viewModel.getWorkoutsReal()
 
         binding.fab.setOnClickListener {
             startActivity(Intent(this, AddWorkoutActivity::class.java))

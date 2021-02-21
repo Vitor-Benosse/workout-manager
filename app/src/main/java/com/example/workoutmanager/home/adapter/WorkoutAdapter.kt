@@ -17,8 +17,8 @@ class WorkoutAdapter(
         return WorkoutViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: WorkoutViewHolder, position: Int) {
-        holder.bindView(workouts[position])
+    override fun onBindViewHolder(viewHolder: WorkoutViewHolder, position: Int) {
+        viewHolder.bindView(workouts[position])
     }
 
     override fun getItemCount() = workouts.count()
@@ -29,9 +29,9 @@ class WorkoutAdapter(
         private val date = itemView.workout_date
 
         fun bindView(workout: Workout) {
-            name.text = workout.name.toString()
-            description.text = workout.description.toString()
-            date.text = workout.date.toString()
+            name.text = workout.name
+            description.text = workout.description
+            date.text = workout.date
         }
     }
 }
