@@ -3,12 +3,14 @@ package com.example.workoutmanager.add.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.workoutmanager.R
 import com.example.workoutmanager.Util
 import com.example.workoutmanager.add.viewmodel.AddViewModel
 import com.example.workoutmanager.databinding.ActivityAddExerciseBinding
+import com.example.workoutmanager.home.view.HomeActivity
 import com.example.workoutmanager.workout.view.WorkoutActivity
 import com.google.android.material.snackbar.Snackbar
 
@@ -26,10 +28,13 @@ class AddExerciseActivity : AppCompatActivity() {
         binding.addButton.setOnClickListener{
             val name = binding.inputName.text.toString()
             val description = binding.inputDescription.text.toString()
+            val workoutName = intent.getStringExtra("EXTRA_NAME")
 
             when {
                 Util.validateNameAndDescription(name, description) -> {
-                    viewModel.addExercise(name, description)
+                    if (workoutName != null) {
+                        viewModel.addExercise(name, description, workoutName)
+                    }
                 }
                 else -> {
                     Snackbar.make(binding.addButton,
@@ -44,7 +49,7 @@ class AddExerciseActivity : AppCompatActivity() {
     private fun initViewModel() {
         viewModel.stateAddExercise.observe(this, { state ->
             state?.let {
-                navigateToWorkout(it)
+                navigateToHome(it)
             }
         })
 
@@ -55,10 +60,10 @@ class AddExerciseActivity : AppCompatActivity() {
         })
     }
 
-    private fun navigateToWorkout(status : Boolean) {
+    private fun navigateToHome(status : Boolean) {
         when {
             status -> {
-                startActivity(Intent(this, WorkoutActivity::class.java))
+                startActivity(Intent(this, HomeActivity::class.java))
             }
         }
     }

@@ -1,10 +1,10 @@
 package com.example.workoutmanager
 
-import android.content.ClipDescription
 import android.content.Context
 import android.util.Patterns
 import com.example.workoutmanager.Constants.APP_KEY
-import com.example.workoutmanager.Constants.UUID_KEY
+import com.example.workoutmanager.Constants.EMPTY_STRING
+import com.example.workoutmanager.Constants.UIID_KEY
 
 object Util {
     fun validateEmailAndPassword(email: String, password: String) : Boolean {
@@ -55,8 +55,14 @@ object Util {
         }
     }
 
-    fun saveUserId(context: Context, uuid: String?) {
+
+    fun saveUserId(context: Context, uiid: String?) {
         val preferences = context.getSharedPreferences(APP_KEY, Context.MODE_PRIVATE)
-        preferences.edit().putString(UUID_KEY, uuid).apply()
+        preferences.edit().putString(UIID_KEY, uiid).apply()
+    }
+
+    fun getUserId(context: Context): String? {
+        val preferences = context.getSharedPreferences(APP_KEY, Context.MODE_PRIVATE)
+        return preferences.getString(UIID_KEY, EMPTY_STRING)
     }
 }

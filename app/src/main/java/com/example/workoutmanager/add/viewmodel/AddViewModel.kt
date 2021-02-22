@@ -3,6 +3,7 @@ package com.example.workoutmanager.add.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.example.workoutmanager.Util
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -18,8 +19,8 @@ class AddViewModel(application: Application) : AndroidViewModel(application) {
             "description" to description,
             "date" to date
         )
-        db.collection("workouts")
-            .add(workout)
+        db.collection(Util.getUserId(getApplication()).toString()).document(name)
+            .set(workout)
             .addOnSuccessListener {
                 stateAddWorkout.value = true
             }
@@ -29,13 +30,15 @@ class AddViewModel(application: Application) : AndroidViewModel(application) {
             }
     }
 
-    fun addExercise(name: String, description: String) {
+    fun addExercise(name: String, description: String, workoutName: String) {
         val exercise = hashMapOf(
             "name" to name,
-            "description" to description
+            "description" to description,
+            "workoutName" to workoutName
         )
-        db.collection("exercises")
-            .add(exercise)
+        db.collection(Util.getUserId(getApplication()).toString()).document(workoutName)
+            .collection("exercises").document(name)
+            .set(exercise)
             .addOnSuccessListener {
                 stateAddExercise.value = true
             }

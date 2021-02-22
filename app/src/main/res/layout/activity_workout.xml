@@ -48,7 +48,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/moreIcon"
+                    app:layout_constraintEnd_toStartOf="@+id/deleteIcon"
                     app:layout_constraintStart_toEndOf="@+id/arrowBackIcon"
                     android:text="@string/_1"
                     android:textSize="27sp"
@@ -56,14 +56,14 @@
                     android:textColor="@color/black"/>
 
                 <ImageView
-                    android:id="@+id/moreIcon"
+                    android:id="@+id/deleteIcon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_more" />
+                    app:srcCompat="@drawable/ic_delete" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

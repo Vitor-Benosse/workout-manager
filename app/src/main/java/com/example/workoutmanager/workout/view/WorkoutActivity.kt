@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -32,8 +33,23 @@ class WorkoutActivity : AppCompatActivity() {
 
         binding.toolbarWorkoutName.text = intent.getStringExtra(EXTRA_NAME)
 
-        binding.arrowBackIcon.setOnClickListener{
+        binding.arrowBackIcon.setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
+        }
+
+        binding.deleteIcon.setOnClickListener {
+            val builder = AlertDialog.Builder(this)
+            builder.setMessage("Are you sure you want to Delete the entire workout?")
+                .setCancelable(false)
+                .setPositiveButton("Yes") { _, _ ->
+                    viewModel.deleteWorkout(intent.getStringExtra(EXTRA_NAME))
+                    startActivity(Intent(this, HomeActivity::class.java))
+                }
+                .setNegativeButton("No") { dialog, _ ->
+                    dialog.dismiss()
+                }
+            val alert = builder.create()
+            alert.show()
         }
 
         viewModel.exerciseLiveData.observe(this, Observer {
@@ -42,17 +58,22 @@ class WorkoutActivity : AppCompatActivity() {
                     layoutManager = LinearLayoutManager(this@WorkoutActivity, RecyclerView.VERTICAL, false)
                     setHasFixedSize(true)
                     adapter = ExerciseAdapter(exercises) { exercise ->
-                        val intent = ExerciseActivity.getStartIntent(this@WorkoutActivity, exercise.name, exercise.description)
+                        val intent = ExerciseActivity.getStartIntent(
+                            this@WorkoutActivity,
+                            exercise.name,
+                            exercise.description,
+                            intent.getStringExtra(EXTRA_NAME)
+                        )
                         this@WorkoutActivity.startActivity(intent)
                     }
                 }
             }
         })
 
-        viewModel.getExercises()
+        viewModel.getExercises(intent.getStringExtra(EXTRA_NAME))
 
         binding.fab.setOnClickListener {
-            startActivity(Intent(this, AddExerciseActivity::class.java))
+            startActivity(Intent(this, AddExerciseActivity::class.java).putExtra("EXTRA_NAME", intent.getStringExtra(EXTRA_NAME)))
         }
     }
 

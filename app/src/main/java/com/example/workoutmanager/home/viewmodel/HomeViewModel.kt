@@ -4,6 +4,7 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.example.workoutmanager.Util
 import com.example.workoutmanager.model.Workout
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -14,7 +15,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     fun getWorkouts() {
         val workouts: MutableList<Workout> = mutableListOf()
-        db.collection("workouts")
+        db.collection(Util.getUserId(getApplication()).toString())
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
