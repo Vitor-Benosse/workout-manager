@@ -19,9 +19,7 @@ In this project I used Firebase Authentication for user authentication and Fireb
 
 Here is the layout link for Figma: <a href="https://www.figma.com/file/3GtNFxU1lLuLb6Ic09KmJ8/My-Workout-Manager?node-id=0%3A1" target="_blank">Figma Layout</a>
 
-<video controls>
-  <source src="presentation-video.mp4" type="video/mp4">
-</video>
+<img src="presentation-gif.gif"/>
 
 ## :rocket: Running The App
 
