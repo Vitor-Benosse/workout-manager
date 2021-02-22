@@ -14,8 +14,7 @@ class WorkoutAdapter(
 ) : RecyclerView.Adapter<WorkoutAdapter.WorkoutViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkoutViewHolder {
-        val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_workout, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_workout, parent, false)
         return WorkoutViewHolder(itemView, onItemClickListener)
     }
 

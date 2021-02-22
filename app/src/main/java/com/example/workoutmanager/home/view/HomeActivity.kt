@@ -39,7 +39,7 @@ class HomeActivity : AppCompatActivity() {
             }
         })
 
-        viewModel.getWorkoutsReal()
+        viewModel.getWorkouts()
 
         binding.fab.setOnClickListener {
             startActivity(Intent(this, AddWorkoutActivity::class.java))

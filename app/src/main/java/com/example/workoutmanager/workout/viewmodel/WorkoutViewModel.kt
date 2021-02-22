@@ -1,31 +1,30 @@
-package com.example.workoutmanager.home.viewmodel
+package com.example.workoutmanager.workout.viewmodel
 
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.example.workoutmanager.model.Workout
+import com.example.workoutmanager.model.Exercise
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-class HomeViewModel(application: Application) : AndroidViewModel(application) {
+class WorkoutViewModel(application: Application) : AndroidViewModel(application) {
     private val db = Firebase.firestore
-    val workoutLiveData : MutableLiveData<List<Workout>> = MutableLiveData()
+    val exerciseLiveData : MutableLiveData<List<Exercise>> = MutableLiveData()
 
-    fun getWorkouts() {
-        val workouts: MutableList<Workout> = mutableListOf()
-        db.collection("workouts")
+    fun getExercises() {
+        val exercises: MutableList<Exercise> = mutableListOf()
+        db.collection("exercises")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    val workout = Workout(
+                    val exercise = Exercise(
                         name = document.getString("name"),
                         description = document.getString("description"),
-                        date = document.getString("date")
                     )
-                    workouts.add(workout)
+                    exercises.add(exercise)
                 }
-                workoutLiveData.value = workouts
+                exerciseLiveData.value = exercises
             }
             .addOnFailureListener { exception ->
                 Log.w("Failure", "Error getting documents.", exception)

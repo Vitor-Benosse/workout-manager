@@ -46,6 +46,15 @@ object Util {
         }
     }
 
+    fun validateNameAndDescription(name: String, description: String) : Boolean {
+        return when {
+            name.isEmpty() || description.isEmpty() -> {
+                false
+            }
+            else -> true
+        }
+    }
+
     fun saveUserId(context: Context, uuid: String?) {
         val preferences = context.getSharedPreferences(APP_KEY, Context.MODE_PRIVATE)
         preferences.edit().putString(UUID_KEY, uuid).apply()

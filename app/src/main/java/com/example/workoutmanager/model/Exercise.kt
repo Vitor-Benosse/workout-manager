@@ -1,7 +1,6 @@
 package com.example.workoutmanager.model
 
 data class Exercise(
-    val name : Int,
-    val imageUrl : String,
-    val comments : String
+    val name : String?,
+    val description : String?
 )

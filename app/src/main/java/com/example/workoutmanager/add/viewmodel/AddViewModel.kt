@@ -29,8 +29,20 @@ class AddViewModel(application: Application) : AndroidViewModel(application) {
             }
     }
 
-    fun addExercise() {
-
+    fun addExercise(name: String, description: String) {
+        val exercise = hashMapOf(
+            "name" to name,
+            "description" to description
+        )
+        db.collection("exercises")
+            .add(exercise)
+            .addOnSuccessListener {
+                stateAddExercise.value = true
+            }
+            .addOnFailureListener {
+                errorMessage("Failed to add.")
+                stateAddExercise.value = false
+            }
     }
 
     private fun errorMessage(message: String) {
