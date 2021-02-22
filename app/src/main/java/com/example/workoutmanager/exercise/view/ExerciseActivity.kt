@@ -32,7 +32,7 @@ class ExerciseActivity : AppCompatActivity() {
 
         binding.deleteIcon.setOnClickListener{
             val builder = AlertDialog.Builder(this)
-            builder.setMessage("Are you sure you want to Delete the entire workout?")
+            builder.setMessage("Are you sure you want to Delete the exercise?")
                 .setCancelable(false)
                 .setPositiveButton("Yes") { _, _ ->
                     viewModel.deleteExercise(
